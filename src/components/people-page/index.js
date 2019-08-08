@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ItemList from "../item-list";
-import DetailsPerson from "../item-details";
 import SwapiService from "../../services/swapi";
 import Row from "../row";
 
@@ -14,30 +13,36 @@ export default class PeoplePage extends Component {
   };
 
   onViewSelect = (selectedPerson) => {
-    console.log(selectedPerson);
     this.setState({
       selectedPerson
     })
   }
 
   render() {
-
+    const { getAllPeople, getAllStarships } = this.swapiService;
     const itemList = (
         <ItemList
             onPersonSelected={this.onViewSelect}
-            getData={this.swapiService.getAllPeople}
+            getData={getAllPeople}
         >
         {(i) => (
           `${i.name} (${i.birthYear})`
         )}
         </ItemList>
     ),
-        personDetails = (
-            <DetailsPerson selectedDetails={this.state.selectedPerson}/>
-        )
+      starshipList = (
+        <ItemList
+          onPersonSelected={this.onViewSelect}
+          getData={getAllStarships}
+        >
+          {(i) => (
+            `${i.name} (${i.model})`
+          )}
+        </ItemList>
+      );
     return (
         <Row left={itemList}
-             right={personDetails}/>
+             right={starshipList}/>
     )
   }
 }
