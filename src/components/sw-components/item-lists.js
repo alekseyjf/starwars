@@ -9,7 +9,7 @@ const {
   getAllPlanets
 } = new SwapiService();
 
-const withChildFunction = (Wrapped, fn) => {
+const withChildFunction = (fn) => (Wrapped) => {
   return (props) => {
     return (
       <Wrapped {...props}>
@@ -21,18 +21,13 @@ const withChildFunction = (Wrapped, fn) => {
 const renderName = ({name}) => <span>{name}</span>
 const renderModelName = ({model, name}) => <span>{name} ({model})</span>
 
-const PersonList = withData(
+const PersonList = withData(getAllPeople)(withChildFunction(renderName)(ItemList));
+const PlanetList = withData(getAllPlanets)(
                       withChildFunction(
-                        ItemList, renderName ),
-                      getAllPeople);
-const PlanetList = withData(
+                        renderName)(ItemList));
+const StarshipsList = withData(getAllStarships)(
                       withChildFunction(
-                        ItemList, renderName ),
-                      getAllPlanets);
-const StarshipsList = withData(
-                      withChildFunction(
-                        ItemList, renderModelName ),
-                      getAllStarships);
+                        renderModelName)(ItemList));
 
 export {
   PersonList,

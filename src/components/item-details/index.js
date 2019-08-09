@@ -18,7 +18,6 @@ export {
 }
 
 const ItemDetails = (props) => {
-  console.log('props', props);
   const {children, data: {spinner, image, item}} = props;
 
   if (!item) {

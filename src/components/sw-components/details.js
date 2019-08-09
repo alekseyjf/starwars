@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ItemDetails from '../item-details';
 
 import withDetails from '../hoc-helpers/detailsHoc'
@@ -18,9 +16,12 @@ const {
 
 } = swapiServices;
 
-const PersonDetails = withDetails(ItemDetails, getPerson, getPersonImage);
-const PlanetDetails = withDetails(ItemDetails, getPlanet, getPlanetImage);
-const StarshipDetails = withDetails(ItemDetails, getStarship, getStarshipImage);
+const PersonDetails = withDetails(
+                        ItemDetails, getPerson, getPersonImage);
+const PlanetDetails = withDetails(
+                        ItemDetails, getPlanet, getPlanetImage);
+const StarshipDetails = withDetails(
+                        ItemDetails, getStarship, getStarshipImage);
 
 export {
   PersonDetails,

@@ -1,25 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './header.css';
 
 const Header = () => {
-  const hedaer = [
-    {name: 'People', key: 1},
-    {name: 'Planets', key: 2},
-    {name: 'Starships', key: 3}
+  const header = [
+    {name: 'People', key: 1, to: '/people'},
+    {name: 'Planets', key: 2, to: '/planets'},
+    {name: 'Starships', key: 3, to: '/starships'}
   ];
-  const elements = hedaer.map((item) => {
-    const {name, key} = item;
+  const elements = header.map((item) => {
+    const {name, key, to} = item;
 
     return (
         <li key={key}>
-          {name}
+          <Link to={to}>
+            {name}
+          </Link>
+
         </li>
     )
   })
   return (
       <div className='header d-flex'>
-        <a href="/" className='logo'>STARWARS</a>
+        <Link to="/" className='logo'>STARWARS</Link>
         <ul className='d-flex'>
           {elements}
         </ul>

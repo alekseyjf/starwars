@@ -22,13 +22,14 @@ const withDetails = (Comp, getData, getImgUrl) => {
     }
 
     updateItem = () => {
+      this.setState({
+        spinner: true
+      })
       const { itemId } = this.props;
-
-
+      console.log(itemId);
       if (!itemId) {
         return;
       }
-      console.log('1', this.props);
       getData(itemId)
         .then((item) => {
           this.setState({
