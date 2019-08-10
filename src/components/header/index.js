@@ -5,9 +5,11 @@ import './header.css';
 
 const Header = () => {
   const header = [
-    {name: 'People', key: 1, to: '/people'},
-    {name: 'Planets', key: 2, to: '/planets'},
-    {name: 'Starships', key: 3, to: '/starships'}
+    {name: 'People', key: 1, to: '/people/'},
+    {name: 'Planets', key: 2, to: '/planets/'},
+    {name: 'Starships', key: 3, to: '/starships/'},
+    {name: 'Login', key: 4, to: '/login/'},
+    {name: 'Secret', key: 5, to: '/secret/'}
   ];
   const elements = header.map((item) => {
     const {name, key, to} = item;
